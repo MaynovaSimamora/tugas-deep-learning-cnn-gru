@@ -1,0 +1,103 @@
+{
+  "model": "GRU",
+  "dataset": "SMS Spam Collection (UCI)",
+  "device": "cpu",
+  "epochs": 6,
+  "batch_size": 64,
+  "learning_rate": 0.002,
+  "max_len": 40,
+  "vocab_size": 7783,
+  "train_samples": 4135,
+  "val_samples": 517,
+  "test_samples": 517,
+  "train_seconds": 6.1,
+  "history": {
+    "train_loss": [
+      0.6932974316621201,
+      0.5384566041261426,
+      0.2553406078553113,
+      0.1436825543317714,
+      0.10662024121015291,
+      0.0812518484003058
+    ],
+    "train_acc": [
+      0.6657799274486095,
+      0.8338573155985489,
+      0.9330108827085852,
+      0.9673518742442564,
+      0.9775090689238211,
+      0.9866989117291415
+    ],
+    "val_loss": [
+      0.6795943739105239,
+      0.30936702826498097,
+      0.1548192376555511,
+      0.19050677648134803,
+      0.1685256365420048,
+      0.14620900211758495
+    ],
+    "val_acc": [
+      0.874274661508704,
+      0.9400386847195358,
+      0.9632495164410058,
+      0.9671179883945842,
+      0.9729206963249516,
+      0.97678916827853
+    ]
+  },
+  "test_loss": 0.1205,
+  "test_accuracy": 0.9826,
+  "per_class": [
+    {
+      "class": "ham",
+      "precision": 0.9868,
+      "recall": 0.9934,
+      "f1": 0.9901,
+      "support": 452
+    },
+    {
+      "class": "spam",
+      "precision": 0.9516,
+      "recall": 0.9077,
+      "f1": 0.9291,
+      "support": 65
+    }
+  ],
+  "confusion_matrix": [
+    [
+      449,
+      3
+    ],
+    [
+      6,
+      59
+    ]
+  ],
+  "misclassified_examples": [
+    {
+      "text": "Omw back to tampa from west palm, you hear what happened?",
+      "actual": "ham",
+      "predicted": "spam"
+    },
+    {
+      "text": "Shall call now dear having food",
+      "actual": "ham",
+      "predicted": "spam"
+    },
+    {
+      "text": "You call him and tell now infront of them. Call him now.",
+      "actual": "ham",
+      "predicted": "spam"
+    },
+    {
+      "text": "Win a £1000 cash prize or a prize worth £5000",
+      "actual": "spam",
+      "predicted": "ham"
+    },
+    {
+      "text": "Bought one ringtone and now getting texts costing 3 pound offering more tones etc",
+      "actual": "spam",
+      "predicted": "ham"
+    }
+  ]
+}
