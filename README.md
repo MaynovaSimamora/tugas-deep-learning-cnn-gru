@@ -14,6 +14,17 @@ Implementasi **dua arsitektur deep learning** dalam satu repositori:
 
 ---
 
+## Tautan Dataset
+
+| Dataset | Sumber utama | Mirror / unduhan langsung |
+|---|---|---|
+| MNIST | [Hugging Face — ylecun/mnist](https://huggingface.co/datasets/ylecun/mnist) · [Kaggle — MNIST in CSV](https://www.kaggle.com/datasets/hojjatk/mnist-dataset) · [Kaggle — Digit Recognizer](https://www.kaggle.com/competitions/digit-recognizer) | [Mirror resmi PyTorch](https://ossci-datasets.s3.amazonaws.com/mnist/) (dipakai `torchvision`) |
+| SMS Spam Collection | [UCI ML Repository](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) · [Kaggle — SMS Spam Collection](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset) · [Kaggle — Spam Emails](https://www.kaggle.com/datasets/abdallahwagih/spam-emails) | [sms.tsv (CDN)](https://cdn.jsdelivr.net/gh/justmarkham/pycon-2016-tutorial@master/data/sms.tsv) (dipakai `src/train_gru.py`) |
+
+Kedua dataset diunduh **otomatis** oleh skrip, jadi tidak perlu unduh manual.
+Jika ingin mengunduh manual: letakkan file MNIST di `data/MNIST/raw/`, dan
+`sms.tsv` di `data/sms.tsv`.
+
 ## Hasil Singkat
 
 | Model | Akurasi Test | Precision (macro) | Recall (macro) | F1 (macro) | Waktu Training* |
