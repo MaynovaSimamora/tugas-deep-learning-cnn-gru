@@ -18,8 +18,8 @@ Implementasi **dua arsitektur deep learning** dalam satu repositori:
 
 | Model | Akurasi Test | Precision (macro) | Recall (macro) | F1 (macro) | Waktu Training* |
 |---|---|---|---|---|---|
-| CNN — MNIST | _TBD_ | _TBD_ | _TBD_ | _TBD_ | _TBD_ |
-| GRU — SMS Spam | _TBD_ | _TBD_ | _TBD_ | _TBD_ | _TBD_ |
+| CNN — MNIST | **98,55%** | 98,56% | 98,54% | 98,54% | ±132 detik |
+| GRU — SMS Spam | **98,26%** | 96,92% | 95,06% | 95,96% | ±6 detik |
 
 \*CPU (tanpa GPU), diukur otomatis oleh masing-masing skrip.
 
@@ -110,7 +110,20 @@ Input (1×28×28)
 | Normalisasi | mean 0.1307, std 0.3081 (statistik MNIST) |
 
 ### Hasil
-_TBD — diisi otomatis setelah training._
+Dihasilkan otomatis oleh `src/train_cnn.py` (lihat `results/cnn_metrics.json`).
+
+| Metrik | Nilai |
+|---|---|
+| Akurasi test | **98,55%** (9.855 / 10.000 citra) |
+| Test loss | 0,0425 |
+| Akurasi validasi (epoch 2) | 98,12% |
+| Waktu training (CPU) | ±132 detik |
+
+Akurasi melompat dari 94,92% (epoch 1) menjadi 98,28% (epoch 2) pada data
+training, dan validasi stabil di ±98%. Kelas tersulit adalah digit **9**
+(F1 97,49%) dan **8** (recall 96,0%) — keduanya paling sering tertukar dengan
+digit berekor serupa. Detail per kelas ada di `cnn_metrics.json`, sedangkan
+confusion matrix dan contoh prediksi divisualisasikan di `results/`.
 
 ---
 
@@ -145,7 +158,26 @@ Input token IDs (batch × 40)
 | Gradient clipping | max norm 1.0 |
 
 ### Hasil
-_TBD — diisi otomatis setelah training._
+Dihasilkan otomatis oleh `src/train_gru.py` (lihat `results/gru_metrics.json`).
+
+| Metrik | Nilai |
+|---|---|
+| Akurasi test | **98,26%** (508 / 517 pesan) |
+| Test loss | 0,1205 |
+| Akurasi validasi (epoch 6) | 97,68% |
+| Waktu training (CPU) | ±6 detik (vocab 7.783 kata) |
+
+| Kelas | Precision | Recall | F1 | Support |
+|---|---|---|---|---|
+| ham | 98,68% | 99,34% | 99,01% | 452 |
+| spam | 95,16% | 90,77% | 92,91% | 65 |
+
+Dari 65 SMS spam di data uji, **59 terdeteksi** dan 6 lolos sebagai `ham`;
+sebaliknya hanya 3 dari 452 SMS normal yang salah ditandai spam. Artinya model
+cukup konservatif: presisi spam tinggi (95,16%) sehingga pengguna jarang
+mendapat false alarm, dengan konsekuensi recall spam sedikit lebih rendah.
+Grafik learning curve memperlihatkan val loss mulai mendatar setelah epoch 4,
+pertanda training sudah konvergen dan epoch tambahan berisiko overfitting.
 
 ---
 
